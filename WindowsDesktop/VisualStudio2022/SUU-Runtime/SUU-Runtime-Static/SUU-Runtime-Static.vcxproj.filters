@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{12518a3f-8e59-45d2-8c55-eb9f6b0bc1e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\SUU-Runtime">
+      <UniqueIdentifier>{d2b7ff35-7e21-44aa-a713-b45dc58bdd3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{a9469307-253b-416c-9061-2ab12690e89c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\SUU-Runtime-Platform">
+      <UniqueIdentifier>{659aa64c-8919-4bd7-9464-5a51360cee05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\SUU-Runtime">
+      <UniqueIdentifier>{67599df4-9126-4a58-8fe2-abc3e191cfb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\SUU-Runtime-Platform\WindowsDesktop">
+      <UniqueIdentifier>{4855c5b6-f509-42e6-aaef-e0268fe3234b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\SUU-Runtime-Platform\WindowsDesktop\Windows">
+      <UniqueIdentifier>{e66d63a6-b43c-40fc-95a1-9ffb6f4918c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\SUU-Runtime\Windows">
+      <UniqueIdentifier>{1081f383-45e7-42cb-b296-fd45772b3d1b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\SUU-Runtime.hpp">
+      <Filter>include\SUU-Runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Windows\Windows.hpp">
+      <Filter>include\SUU-Runtime\Windows</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Windows\SUU-Runtime-Windows.cpp">
+      <Filter>source\SUU-Runtime-Platform\WindowsDesktop\Windows</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{78e4361c-28b5-4d9d-a124-c9ddadc37508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\SUU-Runtime-Platform">
+      <UniqueIdentifier>{42c27f80-47c4-4977-ab5a-f1e37549d37e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\SUU-Runtime-Platform\WindowsDesktop">
+      <UniqueIdentifier>{388a4d7a-bd49-432a-b1d8-083802a28888}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Main.cpp">
+      <Filter>source\SUU-Runtime-Platform\WindowsDesktop</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\WindowsPrerequisites.hpp">
+      <Filter>source\SUU-Runtime-Platform\WindowsDesktop</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

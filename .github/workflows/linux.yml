@@ -1,0 +1,47 @@
+
+name: Linux-CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    if: |
+      !contains(github.event.head_commit.message, '[skip ci]')
+      && !contains(github.event.head_commit.message, '[skip ci]')
+      && !contains(github.event.head_commit.message, '[Android]')
+      && !contains(github.event.head_commit.message, '[Windows]')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Install packages
+        run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+          sudo apt update
+          sudo apt install ninja-build
+          sudo apt install libx11-dev
+          
+      - name: Configure
+        working-directory: ./Linux/
+        run: |
+          mkdir build && cd build
+          cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
+        
+      - name: Build
+        working-directory: ./Linux/
+        run: |
+          cmake --build build
+          
+      - name: Run tests
+        working-directory: ./Linux/
+        run: |
+          cd build
+          ./suu_runtime_test
+          
+        

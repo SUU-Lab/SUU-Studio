@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{22023670-57f4-4a84-a6f1-d49791b131d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Test-Platform">
+      <UniqueIdentifier>{78acf064-7502-45d8-8549-59901f78c803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Test">
+      <UniqueIdentifier>{aef01698-f499-4a45-b2d7-d3dc83300e99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Test-Platform\WindowsDesktop">
+      <UniqueIdentifier>{c0a6ab73-b1e6-46b3-8ba9-704a8d231d90}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\SUU-Runtime-Test\source\Test-Platform\WindowsDesktop\pch.cpp">
+      <Filter>source\Test-Platform\WindowsDesktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime-Test\source\Test-Platform\WindowsDesktop\SUU-Runtime-Test-Windows.cpp">
+      <Filter>source\Test-Platform\WindowsDesktop</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\SUU-Runtime-Test\source\Test-Platform\WindowsDesktop\pch.hpp">
+      <Filter>source\Test-Platform\WindowsDesktop</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

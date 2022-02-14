@@ -1,0 +1,52 @@
+
+name: Windows-CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+env:
+  BUILD_CONFIGURATION: Release
+  BUILD_PLATFORM: x64
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Windows:
+    runs-on: windows-2022
+    if: |
+      !contains(github.event.head_commit.message, '[skip ci]')
+      && !contains(github.event.head_commit.message, '[skip ci]')
+      && !contains(github.event.head_commit.message, '[Android]')
+      && !contains(github.event.head_commit.message, '[Linux]')
+      
+    name: Run MSBuild and Test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.1.0
+        id: checkout_code
+
+      - name: Setup MSBuild and add to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+        id: setup_msbuild
+        
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1
+        id: setup_nuget
+        
+      - name: Restore the application
+        working-directory: .\WindowsDesktop\VisualStudio2022\SUU-Runtime\
+        run: nuget restore .\SUU-Runtime.sln
+      
+      - name: Run MSBuild
+        id: run_msbuild
+        working-directory: .\WindowsDesktop\VisualStudio2022\SUU-Runtime\
+        run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} /p:Platform=${{env.BUILD_PLATFORM}} .\SUU-Runtime.sln
+        
+      - name: Run Test
+        id: run_test
+        working-directory: .\WindowsDesktop\VisualStudio2022\SUU-Runtime\output\SUU-Runtime-Test\${{env.BUILD_CONFIGURATION}}\${{env.BUILD_PLATFORM}}\
+        run: .\SUU-Runtime-Test.exe
+  
