@@ -354,4 +354,6 @@ build/
 WindowsDesktop/VisualStudio2022/SUU-Runtime/intermediate/
 WindowsDesktop/VisualStudio2022/SUU-Runtime/output/
 
-install/
+
+ThirdParty/Install/
+ThirdParty/Repositories/
