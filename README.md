@@ -5,20 +5,25 @@ SUU-Studio source code
 ![Linux](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/linux.yml/badge.svg)
 ![Android](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/android.yml/badge.svg)
 
+# Pre-requisites
 
-## Setup
+## Windows
+- Install Visual Studio 2022
+- Install [Git](https://git-scm.com/)
 
-### Windows
+# Clone the repository
+Before building, you need to clone the SUU-Studio github repository. Use following commands to clone the SUU-Studio repository.
 
-1. Clone
-```
+## Windows
+```cmd
 > git clone https://github.com/SUU-Lab/SUU-Studio.git
 ```
 
-2. Setup
+# Build and install dependencies
+After clone, build and install third-party libaries and tools for SUU-Studio's dependencies. Use following commands to build and install the third-party components.
 
-Run `Setup.bat` to install the third-party components.
-```
+## Windows
+```cmd
 > cd SUU-Studio
 > Setup.bat
 ```
