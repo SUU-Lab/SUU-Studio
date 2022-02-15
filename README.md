@@ -1,5 +1,4 @@
 # SUU-Studio
-SUU-Studio source code
 
 ![Windows](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/windows.yml/badge.svg)
 ![Linux](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/linux.yml/badge.svg)
