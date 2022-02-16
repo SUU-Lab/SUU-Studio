@@ -37,7 +37,7 @@ jobs:
 
       - name: Install
         if: steps.install-cache.outputs.cache-hit != 'true'
-        run: .\setup-linux.sh
+        run: ./setup-linux.sh
 
       - name: Configure
         working-directory: ./Linux/
