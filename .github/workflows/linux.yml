@@ -23,10 +23,22 @@ jobs:
       - name: Install packages
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+          sudo apt-get install build-essential autoconf libtool pkg-config
           sudo apt update
           sudo apt install ninja-build
           sudo apt install libx11-dev
           
+      - name: Install Cache
+        uses: actions/cache@v2
+        id: install-cache
+        with:
+          path: ./ThirdParty/Install/*
+          key: install-cache
+
+      - name: Install
+        if: steps.install-cache.outputs.cache-hit != 'true'
+        run: .\setup-linux.sh
+
       - name: Configure
         working-directory: ./Linux/
         run: |
