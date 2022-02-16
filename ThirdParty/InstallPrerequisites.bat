@@ -1,7 +1,7 @@
 @echo off
 
 set CURRENT_DIR=%~dp0
-set TARGET_DIR=%CURRENT_DIR%\Install
+set TARGET_DIR=%CURRENT_DIR%\Install\Windows
 if not exist %TARGET_DIR% (
 	md %TARGET_DIR%
 )

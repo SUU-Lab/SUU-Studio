@@ -14,7 +14,7 @@ if not exist grpc (
 )
 
 pushd grpc
-call :Func_Build_gRPC Win32
+@rem call :Func_Build_gRPC Win32
 call :Func_Build_gRPC x64
 popd
 
