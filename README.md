@@ -38,7 +38,9 @@ After clone, build and install third-party libaries and tools for SUU-Studio's d
 > Setup.bat
 ```
 ## Linux
+Give `setup-linux.sh` execute permission. Then, run `setup-linux.sh`.
 ```sh
 $ cd SUU-Studio
+$ chmod +x setup-linux.sh
 $ ./setup-linux.sh
 ```
