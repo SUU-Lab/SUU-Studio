@@ -10,20 +10,26 @@
     <Filter Include="source">
       <UniqueIdentifier>{a9469307-253b-416c-9061-2ab12690e89c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\SUU-Runtime-Platform">
-      <UniqueIdentifier>{659aa64c-8919-4bd7-9464-5a51360cee05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\SUU-Runtime">
-      <UniqueIdentifier>{67599df4-9126-4a58-8fe2-abc3e191cfb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\SUU-Runtime-Platform\WindowsDesktop">
-      <UniqueIdentifier>{4855c5b6-f509-42e6-aaef-e0268fe3234b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\SUU-Runtime-Platform\WindowsDesktop\Windows">
-      <UniqueIdentifier>{e66d63a6-b43c-40fc-95a1-9ffb6f4918c9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\SUU-Runtime\Windows">
       <UniqueIdentifier>{1081f383-45e7-42cb-b296-fd45772b3d1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Runtime">
+      <UniqueIdentifier>{67599df4-9126-4a58-8fe2-abc3e191cfb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Runtime\Remote">
+      <UniqueIdentifier>{9dc95fb5-0b2b-4fea-9350-b4dc8ee21240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Runtime-Platform">
+      <UniqueIdentifier>{659aa64c-8919-4bd7-9464-5a51360cee05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Runtime-Platform\WindowsDesktop">
+      <UniqueIdentifier>{4855c5b6-f509-42e6-aaef-e0268fe3234b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Runtime-Platform\WindowsDesktop\Windows">
+      <UniqueIdentifier>{e66d63a6-b43c-40fc-95a1-9ffb6f4918c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\SUU-Runtime\Remote">
+      <UniqueIdentifier>{8d5453c3-6c5e-4a5a-bee7-89d27e35799e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,10 +39,28 @@
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Windows\Windows.hpp">
       <Filter>include\SUU-Runtime\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.grpc.pb.h">
+      <Filter>source\Runtime\Remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.pb.h">
+      <Filter>source\Runtime\Remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Remote\Hello.hpp">
+      <Filter>include\SUU-Runtime\Remote</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Windows\SUU-Runtime-Windows.cpp">
-      <Filter>source\SUU-Runtime-Platform\WindowsDesktop\Windows</Filter>
+      <Filter>source\Runtime-Platform\WindowsDesktop\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.grpc.pb.cc">
+      <Filter>source\Runtime\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.pb.cc">
+      <Filter>source\Runtime\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\HelloTest.cpp">
+      <Filter>source\Runtime\Remote</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

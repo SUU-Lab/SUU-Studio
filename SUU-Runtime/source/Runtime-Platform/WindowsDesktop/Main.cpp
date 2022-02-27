@@ -1,5 +1,6 @@
 ﻿#include <SUU-Runtime/SUU-Runtime.hpp>
 #include <SUU-Runtime/Windows/Windows.hpp>
+#include <SUU-Runtime/Remote/Hello.hpp>
 #include <sstream>
 #include <cassert>
 
@@ -54,6 +55,8 @@ int WINAPI WinMain(
         style,
         static_cast<int>(rect.right - rect.left),
         static_cast<int>(rect.bottom - rect.top));
+
+    remote::SayHello("SUUDAI");
 
     while (DoSystemEvents(hWindow))
     {

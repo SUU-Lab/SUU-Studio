@@ -9,6 +9,8 @@ namespace SUU_Studio
         public MainWindow()
         {
             InitializeComponent();
+
+            Remote.HelloServer.Start();
         }
 
         [DllImport("user32.dll")]
@@ -59,6 +61,11 @@ namespace SUU_Studio
         private void RuntimeWindow_SizeChanged(object sender, EventArgs e)
         {
             EnumChildWindows(RuntimeWindow.Handle, EnumChildWindowsProcedure, RuntimeWindow.Handle);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Remote.HelloServer.Shutdown();
         }
     }
 }
