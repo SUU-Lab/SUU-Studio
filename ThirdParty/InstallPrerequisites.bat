@@ -1,7 +1,7 @@
 @echo off
 
 set CURRENT_DIR=%~dp0
-set TARGET_DIR=%CURRENT_DIR%\Install\Windows
+set TARGET_DIR=%CURRENT_DIR%Install\Windows
 if not exist %TARGET_DIR% (
 	md %TARGET_DIR%
 )
@@ -49,10 +49,8 @@ del nasm-%NASM_VERSION%-win64.zip
 echo "%PATH%" | find "nasm.exe" > NUL
 if not ERRORLEVEL 1 goto :NASM_INSTALLED
 
-set PATH=%TARGET_DIR%\nasm-%NASM_VERSION%;%PATH%
-
 :NASM_INSTALLED
-nasm -version
+%NASM_PATH%\nasm -version
 
 
 :EXIT
