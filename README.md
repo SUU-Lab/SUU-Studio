@@ -7,8 +7,23 @@
 # Pre-requisites
 
 ## Windows
-- Install Visual Studio 2022
-- Install [Git](https://git-scm.com/)
+- Install [Visual Studio 2022](https://visualstudio.microsoft.com/ja/vs/whatsnew/)
+
+- Install Git, CMake, NASM, and Ninja. You can install them manually or use Chocolatey.
+
+### Install Manually
+[Git](https://git-scm.com/download/win), [CMake](https://cmake.org/download/), [NASM](https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/), [Ninja](https://github.com/ninja-build/ninja/releases) And Add to PATH
+
+
+### Install with [Chocolatey](https://docs.chocolatey.org/en-us/choco/setup)
+```cmd
+> @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+
+> cinst -y cmake -Version 3.22.2
+> cinst -y ninja -Version 1.10.2
+> cinst -y nasm -Version 2.15.05
+```
+
 
 ## Linux
 ```sh
