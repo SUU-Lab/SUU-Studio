@@ -16,7 +16,7 @@ if not exist grpc (
 pushd grpc
 @rem call :Func_Build_gRPC Win32 Debug
 @rem call :Func_Build_gRPC Win32 Release
-@rem call :Func_Build_gRPC x64 Debug
+call :Func_Build_gRPC x64 Debug
 call :Func_Build_gRPC x64 Release
 popd
 
@@ -30,15 +30,19 @@ set BUILD_DIR=.build_%BUILD_TARGET%_Windows
 set BUILD_CONFIGURATION=%2
 set INSTALL_DIR=%CURRENT_DIR%\Install\Windows\grpc-%GRPC_VERSION%\%BUILD_TARGET%\%BUILD_CONFIGURATION%
 
-if not exist %BUILD_DIR% (
-	md %BUILD_DIR%
+set VC_TARGET_NAME=%BUILD_TARGET%
+
+if "%VC_TARGET_NAME%"=="Win32" (
+	set VC_TARGET_NAME=x86
 )
 
-set PATH=%NASM_PATH%;%PATH%
+if not exist %BUILD_DIR% (
+	md %BUILD_DIR%
+	call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" %VC_TARGET_NAME%
+)
 
 %CMAKE_PATH%\cmake ^
--G "Visual Studio 17 2022" ^
--A %BUILD_TARGET% ^
+-GNinja ^
 -DCMAKE_BUILD_TYPE=%BUILD_CONFIGURATION% ^
 -DgRPC_INSTALL=ON ^
 -DgRPC_BUILD_TESTS=OFF ^
@@ -46,11 +50,11 @@ set PATH=%NASM_PATH%;%PATH%
 -B%BUILD_DIR%
 
 if not exist %BUILD_DIR%\Release (
-	%CMAKE_PATH%\cmake --build %BUILD_DIR% --config %BUILD_CONFIGURATION%
+	cmake --build %BUILD_DIR%
 )
 
 if not exist %INSTALL_DIR% (
-	%CMAKE_PATH%\cmake --install %BUILD_DIR% --prefix %INSTALL_DIR%
+	cmake --install %BUILD_DIR% --prefix %INSTALL_DIR%
 )
 
 exit /b

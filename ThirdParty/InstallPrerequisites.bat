@@ -33,7 +33,12 @@ echo ---------- NASM ----------
 set NASM_VERSION=2.15.05
 set NASM_PATH=%TARGET_DIR%\nasm-%NASM_VERSION%
 
-if exist %NASM_PATH% (
+if exist %NASM_PATH%\nasm.exe (
+	goto :NASM_INSTALLED
+)
+
+where /Q "nasm.exe"
+if not ERRORLEVEL 1 (
 	goto :NASM_INSTALLED
 )
 
@@ -45,13 +50,42 @@ powershell Expand-Archive -Path nasm-%NASM_VERSION%-win64.zip -DestinationPath %
 
 del nasm-%NASM_VERSION%-win64.zip
 
-@rem Check PATH
-echo "%PATH%" | find "nasm.exe" > NUL
-if not ERRORLEVEL 1 goto :NASM_INSTALLED
+set PATH=%NASM_PATH%;%PATH%
 
 :NASM_INSTALLED
-%NASM_PATH%\nasm -version
+%NASM_PATH%\nasm.exe -version
 
+echo ---------- Ninja ----------
+set NINJA_VERSION=1.10.2
+set NINJA_PATH=%TARGET_DIR%\Ninja-%NINJA_VERSION%
+
+if exist %NINJA_PATH%\ninja.exe (
+	goto :NINJA_INSTALLED
+) else (
+	mkdir %NINJA_PATH%
+)
+
+where /Q "ninja.exe"
+if not ERRORLEVEL 1 (
+	goto :NINJA_INSTALLED
+)
+
+pushd %NINJA_PATH%
+
+bitsadmin /RawReturn /TRANSFER getfile ^
+https://github.com/ninja-build/ninja/releases/download/v%NINJA_VERSION%/ninja-win.zip ^
+%NINJA_PATH%\Ninja-%NINJA_VERSION%.zip
+
+powershell Expand-Archive -Path Ninja-%NINJA_VERSION%.zip -DestinationPath %NINJA_PATH%
+
+del Ninja-%NINJA_VERSION%.zip
+
+popd
+
+set PATH=%NINJA_PATH%;%PATH%
+
+:NINJA_INSTALLED
+%NINJA_PATH%\ninja --version
 
 :EXIT
 popd

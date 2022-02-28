@@ -41,7 +41,7 @@ jobs:
         id: install-cache
         with:
           path: ./ThirdParty/Install/*
-          key: install-cache-v1
+          key: install-cache-v2
 
       - name: Install
         if: steps.install-cache.outputs.cache-hit != 'true'
