@@ -24,6 +24,7 @@ goto :EXIT
 
 @rem ########## Func_Build_gRPC ##########
 :Func_Build_gRPC
+echo ---------- Build gRPC %1 %2 ----------
 echo "BUILD_TARGET=%1"
 set BUILD_TARGET=%1
 set BUILD_DIR=.build_%BUILD_TARGET%_Windows
@@ -36,12 +37,14 @@ if "%VC_TARGET_NAME%"=="Win32" (
 	set VC_TARGET_NAME=x86
 )
 
+for /f "usebackq delims=" %%A in (`vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath -latest`) do set VS_INSTALL_PATH=%%A
+
 if not exist %BUILD_DIR% (
 	md %BUILD_DIR%
-	call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" %VC_TARGET_NAME%
+	call "%VS_INSTALL_PATH%\VC\Auxiliary\Build\vcvarsall.bat" %VC_TARGET_NAME%
 )
 
-%CMAKE_PATH%\cmake ^
+%CMAKE_PATH%\cmake.exe ^
 -GNinja ^
 -DCMAKE_BUILD_TYPE=%BUILD_CONFIGURATION% ^
 -DgRPC_INSTALL=ON ^
