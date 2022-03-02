@@ -24,6 +24,12 @@ add_library(
         ${src_dir}/Runtime-Platform/Linux/Remote/Hello.pb.cc
         ${src_dir}/Runtime-Platform/Linux/SUU-Runtime-Linux.cpp)
 
+target_compile_definitions(
+        suu_runtime_static
+        PUBLIC
+        SUU_RUNTIME_PLATFORM_LINUX=1
+)
+
 target_link_libraries(
         suu_runtime_static
         gRPC::grpc++
@@ -33,7 +39,8 @@ target_link_libraries(
 target_include_directories(
     suu_runtime_static
     PUBLIC
-    ${include_dir})
+    ${include_dir}
+    ${src_dir})
 
 # suu_runtime
 add_executable(
