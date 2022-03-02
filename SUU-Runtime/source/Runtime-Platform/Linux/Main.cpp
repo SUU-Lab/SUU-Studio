@@ -1,4 +1,5 @@
 #include <SUU-Runtime/SUU-Runtime.hpp>
+#include <SUU-Runtime/Remote/Hello.hpp>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <iostream>
@@ -6,6 +7,8 @@
 int main(int, const char*[])
 {
     // std::cout << suu::PlatformName() << std::endl;
+
+    remote::SayHello("SUUDAI");
 
     Display* display = XOpenDisplay(nullptr);
 

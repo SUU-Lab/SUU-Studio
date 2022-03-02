@@ -1,0 +1,18 @@
+#!/bin/bash
+
+CURRENT=$(cd $(dirname $0);pwd)
+pushd $CURRENT
+
+BUILD_DIR=.build
+BUILD_CONFIGURATION=$1
+GRPC_INSTALL_DIR=$CURRENT/../ThirdParty/Install/Linux/grpc-1.43.0/$BUILD_CONFIGURATION
+
+cmake \
+-GNinja \
+-B$BUILD_DIR \
+-DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION \
+-DCMAKE_PREFIX_PATH=$GRPC_INSTALL_DIR \
+
+cmake --build $BUILD_DIR
+
+popd

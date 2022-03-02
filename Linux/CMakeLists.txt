@@ -3,17 +3,32 @@ cmake_minimum_required(VERSION 3.16.3)
 
 project("suu_runtime")
 
-set(include_dir ../SUU-Runtime/include)
+set(SUU_RUNTIME_SRC_DIR ../SUU-Runtime)
+set(gRPC_INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ThirdParty/Install/Linux/grpc-1.43.0/${CMAKE_BUILD_TYPE})
+set(include_dir
+        ${SUU_RUNTIME_SRC_DIR}/include
+        ${gRPC_INSTALL_DIR}/include)
 
-set(src_dir ../SUU-Runtime/source)
+set(src_dir ${SUU_RUNTIME_SRC_DIR}/source)
 
 find_package(X11 REQUIRED)
+find_package(Protobuf CONFIG REQUIRED)
+find_package(gRPC CONFIG REQUIRED)
 
 # suu_runtime_static
 add_library(
         suu_runtime_static
         STATIC
+        ${src_dir}/Runtime/Remote/HelloTest.cpp
+        ${src_dir}/Runtime-Platform/Linux/Remote/Hello.grpc.pb.cc
+        ${src_dir}/Runtime-Platform/Linux/Remote/Hello.pb.cc
         ${src_dir}/Runtime-Platform/Linux/SUU-Runtime-Linux.cpp)
+
+target_link_libraries(
+        suu_runtime_static
+        gRPC::grpc++
+        gRPC::grpc++_reflection
+        protobuf::libprotobuf)
 
 target_include_directories(
     suu_runtime_static
