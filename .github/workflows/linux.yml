@@ -50,7 +50,7 @@ jobs:
       - name: Run tests
         working-directory: ./Linux/
         run: |
-          cd build
+          cd .build
           ./suu_runtime_test
           
         
