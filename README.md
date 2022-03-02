@@ -12,11 +12,11 @@
 
 ## Linux
 ```sh
-$ [sudo] apt-get install git
-$ [sudo] apt-get install build-essential autoconf libtool pkg-config
-$ [sudo] apt-get install cmake
-$ [sudo] apt-get install ninja
-$ [sudo] apt-get install libx11-dev
+$ [sudo] apt install git
+$ [sudo] apt install build-essential autoconf libtool pkg-config
+$ [sudo] apt install cmake
+$ [sudo] apt install ninja-build
+$ [sudo] apt install libx11-dev
 ```
 
 # Clone the repository
