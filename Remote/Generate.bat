@@ -25,6 +25,14 @@ pushd %CPP_GEN_DIR%
 
 popd
 
+@rem copy src files
+set CPP_CODE_DIR=..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote
+if not exist %CPP_CODE_DIR% (
+	mkdir %CPP_CODE_DIR%
+)
+xcopy /e /Y %CPP_GEN_DIR% %CPP_CODE_DIR%
+del /Q %CPP_GEN_DIR%
+
 
 echo ---------- Generate C# code ----------
 
@@ -44,3 +52,8 @@ pushd %CSHARP_GEN_DIR%
 %TARGET_PROTO_FILE%
 
 popd
+
+@rem copy src files
+set CSHARP_CODE_DIR=..\WindowsDesktop\VisualStudio2022\SUU-Studio\Remote
+xcopy /e /Y %CSHARP_GEN_DIR% %CSHARP_CODE_DIR%
+del /Q %CSHARP_GEN_DIR%

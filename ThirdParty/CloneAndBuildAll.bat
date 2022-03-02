@@ -52,7 +52,7 @@ if not exist %BUILD_DIR% (
 -DCMAKE_INSTALL_PREFIX=%INSTALL_DIR% ^
 -B%BUILD_DIR%
 
-if not exist %BUILD_DIR%\Release (
+if not exist %BUILD_DIR%\%BUILD_CONFIGURATION% (
 	cmake --build %BUILD_DIR%
 )
 

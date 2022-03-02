@@ -1,13 +1,6 @@
 ﻿#include <SUU-Runtime/Remote/Hello.hpp>
-
-#pragma warning(push)
-#pragma warning(disable: 4127)
-
 #include <grpc++/grpc++.h>
-
-#pragma warning(pop)
-
-#include "Hello.grpc.pb.h"
+#include "Runtime-Platform/WindowsDesktop/Remote/Hello.grpc.pb.h"
 
 using grpc::Channel;
 using grpc::ClientContext;

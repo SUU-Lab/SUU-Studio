@@ -15,6 +15,7 @@
 $ [sudo] apt-get install git
 $ [sudo] apt-get install build-essential autoconf libtool pkg-config
 $ [sudo] apt-get install cmake
+$ [sudo] apt-get install ninja
 $ [sudo] apt-get install libx11-dev
 ```
 
@@ -45,3 +46,8 @@ $ cd SUU-Studio
 $ chmod +x setup-linux.sh
 $ ./setup-linux.sh
 ```
+
+Visual Studio で gRPC を使う際、C4127 C4251 の警告が出る。
+ソースファイル単位で警告を無効にできるが、生成の度に設定するのは面倒。
+Remoteを別プロジェクトとして、そのプロジェクトでは該当する警告を無効にすることで対応できないか？
+（今は SUU-Runtime-Static で C4127 C4251 を無効にしている。）

@@ -104,9 +104,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\SUU-Runtime\source\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <DisableSpecificWarnings>4127;4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -124,9 +125,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\SUU-Runtime\source\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <DisableSpecificWarnings>4127;4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,9 +146,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\SUU-Runtime\source\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <DisableSpecificWarnings>4127;4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -164,9 +167,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>Default</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\SUU-Runtime\include\;$(ProjectDir)..\..\..\..\SUU-Runtime\source\;$(ProjectDir)..\..\..\..\\ThirdParty\Install\Windows\grpc-1.43.0\$(PlatformName)\$(ConfigurationName)\include\</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <DisableSpecificWarnings>4127;4251;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -182,13 +186,13 @@
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Remote\Hello.hpp" />
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\SUU-Runtime.hpp" />
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Windows\Windows.hpp" />
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.grpc.pb.h" />
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.pb.h" />
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.grpc.pb.h" />
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.grpc.pb.cc" />
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.cc" />
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Windows\SUU-Runtime-Windows.cpp" />
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.grpc.pb.cc" />
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Hello.pb.cc" />
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\HelloTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
