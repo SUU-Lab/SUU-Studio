@@ -1,6 +1,13 @@
 ﻿#include <SUU-Runtime/Remote/Hello.hpp>
 #include <grpc++/grpc++.h>
+
+#if defined(SUU_RUNTIME_PLATFORM_WINDOWS)
 #include "Runtime-Platform/WindowsDesktop/Remote/Hello.grpc.pb.h"
+#elif defined(SUU_RUNTIME_PLATFORM_LINUX)
+#include "Runtime-Platform/Linux/Remote/Hello.grpc.pb.h"
+#else
+#error "not supported yet."
+#endif
 
 using grpc::Channel;
 using grpc::ClientContext;
