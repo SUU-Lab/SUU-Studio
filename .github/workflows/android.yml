@@ -76,7 +76,12 @@ jobs:
         id: install-cache
         with:
           path: ./ThirdParty/Install/*
-          key: install-cache
+          key: install-cachev1
+
+      - name: Install gRPC
+        if: steps.install-cache.outputs.cache-hit != 'true'
+        run: |
+          brew install grpc
 
       - name: Install
         if: steps.install-cache.outputs.cache-hit != 'true'
