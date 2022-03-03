@@ -19,6 +19,22 @@ $ [sudo] apt install ninja-build
 $ [sudo] apt install libx11-dev
 ```
 
+## Android
+
+Installation of Android Studio is recommended. Please click [here](https://developer.android.com/studio/install) for installation instructions.
+
+- Install [Android Studio](https://developer.android.com/studio)
+    - Install Android SDK Build-Tools
+    - Install Android SDK Tools CMake (3.18.1)
+    - Install Android NDK (21.4.7075529)
+
+#### Build for Android on Windows
+We are preparing now!
+
+#### Build for Android on Unix
+We are preparing now!
+
+
 # Clone the repository
 Before building, you need to clone the SUU-Studio github repository. Use following commands to clone the SUU-Studio repository.
 

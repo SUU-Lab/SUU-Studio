@@ -71,6 +71,30 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
         
+      - name: Install Cache
+        uses: actions/cache@v2
+        id: install-cache
+        with:
+          path: ./ThirdParty/Install/*
+          key: install-cache
+
+      - name: Install
+        if: steps.install-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          arch: ${{ matrix.abi }}
+          profile: Nexus 6
+          api-level: ${{ matrix.api-level }}
+          ndk: ${{ matrix.ndk }}
+          cmake: ${{ matrix.cmake }}
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: |
+            export ANDROID_SDK_DIR=$ANDROID_SDK_ROOT
+            chmod +x ${{ github.workspace }}/setup-android.sh
+            ${{ github.workspace }}/setup-android.sh
+
       - name: Build
         working-directory: ./Android/AndroidStudio/SUU-Runtime
         run: |
@@ -96,7 +120,4 @@ jobs:
             adb push ${{ github.workspace }}/Android/AndroidStudio/SUU-Runtime/app/src/main/cpp/tests/intermediates/${{ matrix.configuration }}/${{ matrix.abi }}/suu_runtime_test /data/local/tmp/
             adb shell chmod 775 /data/local/tmp/suu_runtime_test
             adb shell "/data/local/tmp/suu_runtime_test && touch /data/local/tmp/SUCCESS.txt"
-            adb pull /data/local/tmp/SUCCESS.txt ${{ github.workspace }}/Android/AndroidStudio/SUU-Runtime/app/src/main/cpp/tests/SUCCESS.txt        
-        
-        
-        
+            adb pull /data/local/tmp/SUCCESS.txt ${{ github.workspace }}/Android/AndroidStudio/SUU-Runtime/app/src/main/cpp/tests/SUCCESS.txt
