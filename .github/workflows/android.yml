@@ -96,9 +96,8 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
           script: |
-            export ANDROID_SDK_DIR=$ANDROID_SDK_ROOT
             chmod +x ${{ github.workspace }}/setup-android.sh
-            ${{ github.workspace }}/setup-android.sh
+            ${{ github.workspace }}/setup-android.sh $ANDROID_SDK_ROOT
 
       - name: Build
         working-directory: ./Android/AndroidStudio/SUU-Runtime
