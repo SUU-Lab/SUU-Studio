@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+SDK_DIR=$1
+NDK_VERSION=21.4.7075529
+NDK_DIR=$SDK_DIR/ndk/$NDK_VERSION
+
 CURRENT=$(cd $(dirname $0);pwd)
 pushd $CURRENT
 
@@ -25,9 +29,7 @@ fi
 
 pushd grpc
 
-SDK_DIR=$1
-NDK_VERSION=21.4.7075529
-NDK_DIR=$SDK_DIR/ndk/$NDK_VERSION
+
 
 CMAKE_VERSION=3.18.1
 ANDROID_CMAKE_PATH=$SDK_DIR/cmake/$CMAKE_VERSION/bin
@@ -41,12 +43,15 @@ function build_grpc() {
     BUILD_API_LEVEL=$2
     BUILD_CONFIGURATION=$3
 
-    BUILD_DIR=".build_${BUILD_ABI}_Android"
+    BUILD_DIR="${CURRENT}/Repositories/grpc/.build_${BUILD_ABI}_Android"
     GRPC_INSTALL_DIR=$CURRENT/$INSTALL_DIR/grpc-$GRPC_VERSION/$BUILD_CONFIGURATION
 
     if [ ! -d "$BUILD_DIR" ]; then
         mkdir $BUILD_DIR
     fi
+
+	echo "##### BUILD_DIR=${BUILD_DIR}"
+	echo "##### GRPC_INSTALL_DIR=${GRPC_INSTALL_DIR}"
 
     $ANDROID_CMAKE_PATH/cmake \
 	-H. \
@@ -64,8 +69,8 @@ function build_grpc() {
 	-DCMAKE_TOOLCHAIN_FILE=$NDK_DIR/build/cmake/android.toolchain.cmake \
 	-DCMAKE_MAKE_PROGRAM=$ANDROID_CMAKE_PATH/ninja \
 	-DCMAKE_CXX_FLAGS=-std=c++14 \
-	-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=".lib_${BUILD_ABI}_${BUILD_CONFIGURATION}" \
-	-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=".bin_${BUILD_ABI}_${BUILD_CONFIGURATION}" \
+	-DCMAKE_LIBRARY_OUTPUT_DIRECTORY="${CURRENT}/Repositories/grpc/.lib_${BUILD_ABI}_${BUILD_CONFIGURATION}" \
+	-DCMAKE_RUNTIME_OUTPUT_DIRECTORY="${CURRENT}/Repositories/grpc/.bin_${BUILD_ABI}_${BUILD_CONFIGURATION}" \
 	-DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION \
 	-DANDROID_STL=c++_shared \
 	-GNinja \
