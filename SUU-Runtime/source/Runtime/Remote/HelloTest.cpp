@@ -5,6 +5,8 @@
 #include "Runtime-Platform/WindowsDesktop/Remote/Hello.grpc.pb.h"
 #elif defined(SUU_RUNTIME_PLATFORM_LINUX)
 #include "Runtime-Platform/Linux/Remote/Hello.grpc.pb.h"
+#elif defined(SUU_RUNTIME_PLATFORM_ANDROID)
+#include "Runtime-Platform/Android/Remote/Hello.grpc.pb.h"
 #else
 #error "not supported yet."
 #endif
@@ -20,7 +22,7 @@ namespace remote {
 // from the server.
 std::string SayHello(const std::string& user)
 {
-    std::shared_ptr<Channel> channel = grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
+    std::shared_ptr<Channel> channel = grpc::CreateChannel("localhost:8080", grpc::InsecureChannelCredentials());
     std::unique_ptr<Greeter::Stub> stub_(Greeter::NewStub(channel));
 
     // Data we are sending to the server.

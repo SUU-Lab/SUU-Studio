@@ -15,7 +15,7 @@ if not exist grpc (
 
 pushd grpc
 
-set SDK_DIR=C:\Users\nsuud\AppData\Local\Android\Sdk
+set SDK_DIR=C:\Users\bullets_2019_0305\AppData\Local\Android\Sdk
 set NDK_VERSION=21.4.7075529
 set NDK_DIR=%SDK_DIR%\ndk\%NDK_VERSION%
 
@@ -27,14 +27,14 @@ set ANDROID_CMAKE_PATH=%SDK_DIR%\cmake\%CMAKE_VERSION%\bin
 call :Func_Build_gRPC arm64-v8a 21 Debug
 call :Func_Build_gRPC arm64-v8a 21 Release
 
-@REM call :Func_Build_gRPC armeabi-v7a 21 Debug
-@REM call :Func_Build_gRPC armeabi-v7a 21 Release
+call :Func_Build_gRPC armeabi-v7a 21 Debug
+call :Func_Build_gRPC armeabi-v7a 21 Release
 
-@REM call :Func_Build_gRPC x86_64 21 Debug
-@REM call :Func_Build_gRPC x86_64 21 Release
+call :Func_Build_gRPC x86_64 21 Debug
+call :Func_Build_gRPC x86_64 21 Release
 
-@REM call :Func_Build_gRPC x86 21 Debug
-@REM call :Func_Build_gRPC x86 21 Release
+call :Func_Build_gRPC x86 21 Debug
+call :Func_Build_gRPC x86 21 Release
 
 popd
 

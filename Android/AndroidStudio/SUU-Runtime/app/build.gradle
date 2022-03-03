@@ -15,8 +15,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
+                abiFilters 'arm64-v8a'
                 cppFlags '-std=c++14'
-                arguments += '-DCMAKE_PREFIX_PATH=../../../../ThirdParty/Install/Android/grpc-1.43.0/arm64-v8a/Release/lib'
             }
         }
     }
