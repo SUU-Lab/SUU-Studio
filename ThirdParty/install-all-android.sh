@@ -44,7 +44,7 @@ function build_grpc() {
     BUILD_CONFIGURATION=$3
 
     BUILD_DIR="${CURRENT}/Repositories/grpc/.build_${BUILD_ABI}_Android"
-    GRPC_INSTALL_DIR=$CURRENT/$INSTALL_DIR/grpc-$GRPC_VERSION/$BUILD_CONFIGURATION
+    GRPC_INSTALL_DIR=$CURRENT/$INSTALL_DIR/grpc-$GRPC_VERSION/$BUILD_ABI/$BUILD_CONFIGURATION
 
     if [ ! -d "$BUILD_DIR" ]; then
         mkdir $BUILD_DIR

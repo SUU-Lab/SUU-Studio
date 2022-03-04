@@ -5,16 +5,16 @@ project(suu_runtime_static)
 
 set(PACKAGE_SEARCH_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../../../ThirdParty/Install/Android/grpc-1.44.0/${ANDROID_ABI}/${CMAKE_BUILD_TYPE}/lib/cmake)
 
-set(Absl_DIR ${PACKAGE_SEARCH_BASE_DIR}/absl)
+set(absl_DIR ${PACKAGE_SEARCH_BASE_DIR}/absl)
 set(Protobuf_DIR ${PACKAGE_SEARCH_BASE_DIR}/protobuf)
 set(gRPC_DIR ${PACKAGE_SEARCH_BASE_DIR}/grpc)
 set(CMAKE_MODULE_PATH
         ${CMAKE_MODULE_PATH}
-        ${Absl_DIR}
+        ${absl_DIR}
         ${Protobuf_DIR}
         ${gRPC_DIR})
 
-find_package(Absl CONFIG REQUIRED)
+find_package(absl CONFIG REQUIRED)
 find_package(Protobuf CONFIG REQUIRED)
 find_package(gRPC CONFIG REQUIRED)
 
