@@ -19,7 +19,7 @@ protoc \
 -I ../ \
 --grpc_out=. \
 --cpp_out=. \
---plugin=protoc-gen-grpc=/usr/local/bin/grpc_cpp_plugin \
+--plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \
 $TARGET_PROTO_FILE
 
 # copy src files
