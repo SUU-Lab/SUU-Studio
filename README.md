@@ -1,8 +1,8 @@
 # SUU-Studio
 
-![Windows](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/windows.yml/badge.svg)
-![Linux](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/linux.yml/badge.svg)
-![Android](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/android.yml/badge.svg)
+[![Windows](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/windows.yml/badge.svg)](https://github.com/SUU-Lab/SUU-Studio/actions?query=workflow%3A"Windows-CI")
+[![Linux](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/linux.yml/badge.svg)](https://github.com/SUU-Lab/SUU-Studio/actions?query=workflow%3A"Linux-CI")
+[![Android](https://github.com/SUU-Lab/SUU-Studio/actions/workflows/android.yml/badge.svg)](https://github.com/SUU-Lab/SUU-Studio/actions?query=workflow%3A"Android-CI")
 
 # Pre-requisites
 
