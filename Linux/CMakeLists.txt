@@ -20,8 +20,11 @@ add_library(
         suu_runtime_static
         STATIC
         ${src_dir}/Runtime/Remote/HelloTest.cpp
+        ${src_dir}/Runtime/Remote/RuntimeCapture.cpp
         ${src_dir}/Runtime-Platform/Linux/Remote/Hello.grpc.pb.cc
         ${src_dir}/Runtime-Platform/Linux/Remote/Hello.pb.cc
+        ${src_dir}/Runtime-Platform/Linux/Remote/RuntimeCapture.grpc.pb.cc
+        ${src_dir}/Runtime-Platform/Linux/Remote/RuntimeCapture.pb.cc
         ${src_dir}/Runtime-Platform/Linux/SUU-Runtime-Linux.cpp)
 
 target_compile_definitions(
