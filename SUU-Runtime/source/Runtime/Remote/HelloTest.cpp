@@ -22,7 +22,7 @@ namespace remote {
 // from the server.
 std::string SayHello(const std::string& user)
 {
-    std::shared_ptr<Channel> channel = grpc::CreateChannel("localhost:8080", grpc::InsecureChannelCredentials());
+    std::shared_ptr<Channel> channel = grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
     std::unique_ptr<Greeter::Stub> stub_(Greeter::NewStub(channel));
 
     // Data we are sending to the server.

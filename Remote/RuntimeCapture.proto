@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package SUU.Studio;
+
+service RuntimeCapture {
+  rpc SendImage (stream SendImageRequest) returns (SendImageResponse) {}
+}
+
+message SendImageRequest {
+    int32 width = 1;
+    int32 height = 2;
+    int32 buffer_width = 3;
+    int32 buffer_height = 4;
+    bytes buffer = 5;
+}
+
+message SendImageResponse {
+    int32 received_bytes = 1;
+}
+
