@@ -15,4 +15,14 @@
     <PackageReference Include="Grpc" Version="2.44.0" />
   </ItemGroup>
 
+    <ItemGroup>
+        <ApplicationDefinition Include="UI\App.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </ApplicationDefinition>
+    </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Controls\" />
+  </ItemGroup>
+
 </Project>

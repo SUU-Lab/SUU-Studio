@@ -1,6 +1,9 @@
 ﻿using Grpc.Core;
+using SUU.Studio;
+using SUU_Studio.ViewModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace SUU_Studio.Remote
 {
@@ -13,14 +16,18 @@ namespace SUU_Studio.Remote
         }
 
         static int Port = 50051;
-        static Server Server = new()
-        {
-            Services = { Greeter.BindService(new HelloServer()) },
-            Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
-        };
+        static Server Server;
 
-        public static void Start()
+        public static void Start(RuntimeCaptureImageViewModel runtimeCaptureImage, Dispatcher dispatcher)
         {
+            Server = new()
+            {
+                Services = {
+                Greeter.BindService(new HelloServer()),
+                RuntimeCapture.BindService(new RuntimeCaptureService(runtimeCaptureImage, dispatcher))
+            },
+                Ports = { new ServerPort("192.168.11.4", Port, ServerCredentials.Insecure) }
+            };
             Server.Start();
 
             Debug.Print("Greeter server listening on port " + Port);

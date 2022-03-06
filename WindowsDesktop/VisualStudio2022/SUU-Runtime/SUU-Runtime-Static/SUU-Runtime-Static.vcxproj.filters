@@ -51,6 +51,15 @@
     <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.h">
       <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.grpc.pb.h">
+      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.pb.h">
+      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Remote\RuntimeCapture.hpp">
+      <Filter>include\SUU-Runtime\Remote</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Windows\SUU-Runtime-Windows.cpp">
@@ -64,6 +73,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.cc">
       <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.grpc.pb.cc">
+      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.pb.cc">
+      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\RuntimeCapture.cpp">
+      <Filter>source\Runtime\Remote</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

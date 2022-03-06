@@ -1,8 +1,10 @@
 ﻿#include <SUU-Runtime/SUU-Runtime.hpp>
 #include <SUU-Runtime/Windows/Windows.hpp>
 #include <SUU-Runtime/Remote/Hello.hpp>
+#include <SUU-Runtime/Remote/RuntimeCapture.hpp>
 #include <sstream>
 #include <cassert>
+#include <thread>
 
 constexpr const TCHAR WINDOW_CLASS_NAME[] = TEXT("SUU_RUNTIME_WINDOW");
 constexpr const TCHAR STUDIO_WINDOW_NAME[] = TEXT("SUU Studio");
@@ -58,9 +60,43 @@ int WINAPI WinMain(
 
     remote::SayHello("SUUDAI");
 
+    remote::RuntimeCapture runtimeCapture;
+
+    int width = 400, height = 400;
+
+    std::uint8_t* buffer = new std::uint8_t[width * height * 4];
+
+    auto send_image = [&](int offset) {
+        int index = 0;
+        for (int y = 0; y < height; ++y) {
+            for (int x = 0; x < width; ++x) {
+
+                index = 4 * (y * width + x);
+                buffer[index + 0] = (((x + offset) / 100) % 2) ? 255 : 128;
+                buffer[index + 1] = 128;
+                buffer[index + 2] = 128;
+                buffer[index + 3] = 255;
+            }
+        }
+
+        runtimeCapture.SendImage(
+            buffer,
+            width, height,
+            width, height
+        );
+    };
+
+    int offset = 0;
+    send_image(offset);
+
     while (DoSystemEvents(hWindow))
     {
         Update();
+
+        offset += 2;
+        send_image(offset);
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
     return 0;

@@ -13,5 +13,6 @@ namespace SUU_Studio
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
