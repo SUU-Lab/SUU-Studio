@@ -27,17 +27,17 @@ $GRPC_TOOL_DIR/protoc \
 --plugin=protoc-gen-grpc=$GRPC_TOOL_DIR/grpc_cpp_plugin \
 $TARGET_PROTO_FILE
 
-popd
-
 # copy src files
-CPP_CODE_DIR=../SUU-Runtime/source/Runtime-Platform/Linux/Remote
+CPP_CODE_DIR=../../SUU-Runtime/source/Runtime-Platform/Linux/Remote
 
-if [ -d "$CPP_CODE_DIR" ]; then
-    rm -rf $CPP_CODE_DIR
+if [ ! -d "$CPP_CODE_DIR" ]; then
+    mkdir $CPP_CODE_DIR
 fi
 
-mkdir $CPP_CODE_DIR
+mv *.* $CPP_CODE_DIR
 
-mv $CPP_GEN_DIR $CPP_CODE_DIR
+popd
+
+rm -rf $CPP_GEN_DIR
 
 popd
