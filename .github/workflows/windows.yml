@@ -18,8 +18,8 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [ Debug, Release ]
-        platform: [ x64, Win32 ]
+        configuration: [Debug, Release]
+        platform: [x64, Win32]
 
     steps:
       - name: Checkout code

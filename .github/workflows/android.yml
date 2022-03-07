@@ -13,7 +13,6 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   Android:
-  
     runs-on: macOS-latest
     
     if: |
@@ -23,11 +22,11 @@ jobs:
     
     strategy:
       matrix:
-        api-level: [ 21 ]
-        configuration: [ Debug, Release]
-        ndk: [ 21.4.7075529 ]
-        cmake: [ 3.18.1 ]
-        abi: [ x86_64 ]
+        api-level: [21]
+        configuration: [Debug, Release]
+        ndk: [21.4.7075529]
+        cmake: [3.18.1]
+        abi: [x86_64]
         
     steps:
       - name: Checkout code
