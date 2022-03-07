@@ -4,4 +4,4 @@
 
 https://github.com/grpc/grpc
 
-Version : 1.43.0
+Version : 1.44.0

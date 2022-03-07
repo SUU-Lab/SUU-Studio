@@ -7,7 +7,7 @@ if not exist %CURRENT_DIR%\Repositories (
 )
 pushd %CURRENT_DIR%\Repositories
 
-set GRPC_VERSION=1.43.0
+set GRPC_VERSION=1.44.0
 
 if not exist grpc (
 	git clone --recurse-submodules -b v%GRPC_VERSION% https://github.com/grpc/grpc
@@ -24,17 +24,21 @@ set ANDROID_CMAKE_PATH=%SDK_DIR%\cmake\%CMAKE_VERSION%\bin
 
 %ANDROID_CMAKE_PATH%\cmake.exe --version
 
-call :Func_Build_gRPC arm64-v8a 21 Debug
-call :Func_Build_gRPC arm64-v8a 21 Release
-
-call :Func_Build_gRPC armeabi-v7a 21 Debug
-call :Func_Build_gRPC armeabi-v7a 21 Release
-
-call :Func_Build_gRPC x86_64 21 Debug
-call :Func_Build_gRPC x86_64 21 Release
-
-call :Func_Build_gRPC x86 21 Debug
-call :Func_Build_gRPC x86 21 Release
+@REM %1 : abi arm64-v8a armeabi-v7a x86_64 x86
+@REM %2 : api-level
+@REM %3 : configuration Debug Release
+if "%1" == "" if "%2" == "" if "%3" == "" (
+	call :Func_Build_gRPC %1 %2 %3
+) else (
+	call :Func_Build_gRPC arm64-v8a 21 Debug
+	call :Func_Build_gRPC arm64-v8a 21 Release
+	call :Func_Build_gRPC armeabi-v7a 21 Debug
+	call :Func_Build_gRPC armeabi-v7a 21 Release
+	call :Func_Build_gRPC x86_64 21 Debug
+	call :Func_Build_gRPC x86_64 21 Release
+	call :Func_Build_gRPC x86 21 Debug
+	call :Func_Build_gRPC x86 21 Release
+)
 
 popd
 
@@ -49,7 +53,7 @@ goto :EXIT
 	set BUILD_CONFIGURATION=%3
 
 	set BUILD_DIR=.build_%BUILD_ABI%_Android
-	set INSTALL_DIR=%CURRENT_DIR%\Install\Android\grpc-%GRPC_VERSION%\%BUILD_ABI%\%BUILD_CONFIGURATION%
+	set INSTALL_DIR=%CURRENT_DIR%\Install\Android\grpc\%BUILD_ABI%\%BUILD_CONFIGURATION%
 
 	if not exist %BUILD_DIR% (
 		md %BUILD_DIR%

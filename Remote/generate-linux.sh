@@ -4,7 +4,7 @@ CURRENT=$(cd $(dirname $0);pwd)
 pushd $CURRENT
 
 TARGET_PROTO_FILE=$1
-GRPC_TOOL_DIR=$CURRENT/../ThirdParty/Install/Linux/grpc-1.43.0/Release/bin
+GRPC_TOOL_DIR=$CURRENT/../ThirdParty/Install/Linux/grpc/Release/bin
 
 chmod +x $GRPC_TOOL_DIR/protoc
 

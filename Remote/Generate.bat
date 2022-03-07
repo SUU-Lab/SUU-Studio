@@ -3,7 +3,7 @@
 set CURRENT_DIR=%~dp0
 
 set TARGET_PROTO_FILE=%1
-set GRPC_TOOL_DIR=%CURRENT_DIR%..\ThirdParty\Install\Windows\grpc-1.43.0\x64\Release\bin
+set GRPC_TOOL_DIR=%CURRENT_DIR%..\ThirdParty\Install\Windows\grpc\x64\Release\bin
 
 
 echo ---------- Generate C++ code ----------

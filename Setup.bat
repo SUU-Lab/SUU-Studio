@@ -4,6 +4,6 @@ set CURRENT_DIR=%~dp0
 cd /d %CURRENT_DIR%
 
 call ThirdParty\InstallPrerequisites.bat
-call ThirdParty\CloneAndBuildAll.bat
+call ThirdParty\CloneAndBuildAll.bat %1 %2
 
 :EXIT

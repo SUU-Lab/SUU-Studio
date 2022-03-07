@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu -o pipefail
+trap 'echo "ERROR: line no = $LINENO, exit status = $?" >&2; exit 1' ERR
 
 SDK_DIR=$1
 NDK_VERSION=21.4.7075529
@@ -44,7 +46,7 @@ function build_grpc() {
     BUILD_CONFIGURATION=$3
 
     BUILD_DIR="${CURRENT}/Repositories/grpc/.build_${BUILD_ABI}_Android"
-    GRPC_INSTALL_DIR=$CURRENT/$INSTALL_DIR/grpc-$GRPC_VERSION/$BUILD_ABI/$BUILD_CONFIGURATION
+    GRPC_INSTALL_DIR=$CURRENT/$INSTALL_DIR/grpc/$BUILD_ABI/$BUILD_CONFIGURATION
 
     if [ ! -d "$BUILD_DIR" ]; then
         mkdir $BUILD_DIR
@@ -84,17 +86,25 @@ function build_grpc() {
     $ANDROID_CMAKE_PATH/cmake --install $BUILD_DIR --prefix $GRPC_INSTALL_DIR
 }
 
-# build_grpc arm64-v8a 21 Debug
-# build_grpc arm64-v8a 21 Release
+# $2 : abi arm64-v8a armeabi-v7a x86_64 x86
+# $3 : api-level
+# $4 : configuration Debug Release
+if [ -n "$2" ] && [ -n "$3" ] && [ -n "$4" ]; then
+	build_grpc $2 $3 $4
+else
+	build_grpc abi arm64-v8a 21 Debug
+	build_grpc abi arm64-v8a 21 Release
+	
+	build_grpc abi armeabi-v7a 21 Debug
+	build_grpc abi armeabi-v7a 21 Release
 
-# build_grpc armeabi-v7a 21 Debug
-# build_grpc armeabi-v7a 21 Release
+	build_grpc abi x86_64 21 Debug
+	build_grpc abi x86_64 21 Release
 
-build_grpc x86_64 21 Debug
-# build_grpc x86_64 21 Release
+	build_grpc abi x86 21 Debug
+	build_grpc abi x86 21 Release
+fi
 
-# build_grpc x86 21 Debug
-# build_grpc x86 21 Release
 
 # pop grpc
 popd

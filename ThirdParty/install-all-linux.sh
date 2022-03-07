@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu -o pipefail
+trap 'echo "ERROR: line no = $LINENO, exit status = $?" >&2; exit 1' ERR
 
 CURRENT=$(cd $(dirname $0);pwd)
 pushd $CURRENT
@@ -17,7 +19,7 @@ fi
 
 pushd Repositories
 
-GRPC_VERSION=1.43.0
+GRPC_VERSION=1.44.0
 
 if [ ! -d "grpc" ]; then
     git clone --recurse-submodules -b v$GRPC_VERSION https://github.com/grpc/grpc
@@ -34,7 +36,7 @@ fi
 function build_grpc() {
     echo ---------- Build gRPC $1 ----------
     BUILD_CONFIGURATION=$1
-    GRPC_INSTALL_DIR=$CURRENT/$INSTALL_DIR/grpc-$GRPC_VERSION/$BUILD_CONFIGURATION
+    GRPC_INSTALL_DIR=$CURRENT/$INSTALL_DIR/grpc/$BUILD_CONFIGURATION
 
     cmake \
     -GNinja \
@@ -48,8 +50,14 @@ function build_grpc() {
     cmake --install $BUILD_DIR --prefix $GRPC_INSTALL_DIR
 }
 
-build_grpc Debug
-build_grpc Release
+# $1 : configuration Debug Release
+if [ -n "$1" ]; then
+    build_grpc $1
+else
+    build_grpc Debug
+    build_grpc Release
+fi
+
 
 # pop grpc
 popd

@@ -7,17 +7,25 @@ if not exist %CURRENT_DIR%\Repositories (
 )
 pushd %CURRENT_DIR%\Repositories
 
-set GRPC_VERSION=1.43.0
+set GRPC_VERSION=1.44.0
 
 if not exist grpc (
 	git clone --recurse-submodules -b v%GRPC_VERSION% https://github.com/grpc/grpc
 )
 
 pushd grpc
-@rem call :Func_Build_gRPC Win32 Debug
-@rem call :Func_Build_gRPC Win32 Release
-call :Func_Build_gRPC x64 Debug
-call :Func_Build_gRPC x64 Release
+
+@REM %1 : platform Win32 x64
+@REM %2 : configuration Debug Release
+if "%1" == "" if "%2" == "" (
+	call :Func_Build_gRPC %1 %2
+) else (
+	call :Func_Build_gRPC Win32 Debug
+	call :Func_Build_gRPC Win32 Release
+	call :Func_Build_gRPC x64 Debug
+	call :Func_Build_gRPC x64 Release
+)
+
 popd
 
 goto :EXIT
@@ -25,11 +33,10 @@ goto :EXIT
 @rem ########## Func_Build_gRPC ##########
 :Func_Build_gRPC
 echo ---------- Build gRPC %1 %2 ----------
-echo "BUILD_TARGET=%1"
 set BUILD_TARGET=%1
 set BUILD_DIR=.build_%BUILD_TARGET%_Windows
 set BUILD_CONFIGURATION=%2
-set INSTALL_DIR=%CURRENT_DIR%\Install\Windows\grpc-%GRPC_VERSION%\%BUILD_TARGET%\%BUILD_CONFIGURATION%
+set INSTALL_DIR=%CURRENT_DIR%\Install\Windows\grpc\%BUILD_TARGET%\%BUILD_CONFIGURATION%
 
 set VC_TARGET_NAME=%BUILD_TARGET%
 

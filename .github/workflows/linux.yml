@@ -13,7 +13,11 @@ jobs:
     if: |
       !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip ci]')
-      && contains(github.event.head_commit.message, '[Linux]')
+      && !contains(github.event.head_commit.message, '[skip linux]')
+
+    strategy:
+      matrix:
+        configuration: [ Debug, Release ]
 
     steps:
       - name: Checkout code
@@ -29,16 +33,16 @@ jobs:
           
       - name: Install Cache
         uses: actions/cache@v2
-        id: install-cache
+        id: install-cache-${{ matrix.configuration }}
         with:
           path: ./ThirdParty/Install/*
-          key: install-cache
+          key: install-cache-v3-${{ matrix.configuration }}
 
       - name: Install
-        if: steps.install-cache.outputs.cache-hit != 'true'
+        if: steps.install-cache-${{ matrix.configuration }}.outputs.cache-hit != 'true'
         run: |
           chmod +x setup-linux.sh
-          ./setup-linux.sh
+          ./setup-linux.sh ${{ matrix.configuration }}
 
       - name: Configure & Build
         working-directory: ./Linux/
