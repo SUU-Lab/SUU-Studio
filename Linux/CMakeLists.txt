@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.16.3)
 project("suu_runtime")
 
 set(SUU_RUNTIME_SRC_DIR ../SUU-Runtime)
-set(gRPC_INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ThirdParty/Install/Linux/grpc-1.43.0/${CMAKE_BUILD_TYPE})
+set(gRPC_INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ThirdParty/Install/Linux/grpc/${CMAKE_BUILD_TYPE})
 set(include_dir
         ${SUU_RUNTIME_SRC_DIR}/include
         ${gRPC_INSTALL_DIR}/include)

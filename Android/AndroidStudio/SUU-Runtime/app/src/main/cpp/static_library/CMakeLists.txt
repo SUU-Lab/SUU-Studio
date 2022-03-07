@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.18.1)
 
 project(suu_runtime_static)
 
-set(PACKAGE_SEARCH_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../../../ThirdParty/Install/Android/grpc-1.44.0/${ANDROID_ABI}/${CMAKE_BUILD_TYPE}/lib/cmake)
+set(PACKAGE_SEARCH_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../../../ThirdParty/Install/Android/grpc/${ANDROID_ABI}/${CMAKE_BUILD_TYPE}/lib/cmake)
 
 set(absl_DIR ${PACKAGE_SEARCH_BASE_DIR}/absl)
 set(Protobuf_DIR ${PACKAGE_SEARCH_BASE_DIR}/protobuf)

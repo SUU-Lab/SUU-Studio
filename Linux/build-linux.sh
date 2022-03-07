@@ -5,7 +5,7 @@ pushd $CURRENT
 
 BUILD_DIR=.build
 BUILD_CONFIGURATION=$1
-GRPC_INSTALL_DIR=$CURRENT/../ThirdParty/Install/Linux/grpc-1.43.0/$BUILD_CONFIGURATION
+GRPC_INSTALL_DIR=$CURRENT/../ThirdParty/Install/Linux/grpc/$BUILD_CONFIGURATION
 
 cmake \
 -GNinja \
