@@ -71,7 +71,7 @@ jobs:
         
       - name: Install Cache
         uses: actions/cache@v2
-        id: install-cache-${{ matrix.configuration }}
+        id: install-cache
         with:
           path: ./ThirdParty/Install/*
           key: install-cache-v3-${{ matrix.configuration }}
@@ -82,7 +82,7 @@ jobs:
           brew install grpc
 
       - name: Install
-        if: steps.install-cache-${{ matrix.configuration }}.outputs.cache-hit != 'true'
+        if: steps.install-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           arch: ${{ matrix.abi }}
