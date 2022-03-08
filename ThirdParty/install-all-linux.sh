@@ -51,11 +51,11 @@ function build_grpc() {
 }
 
 # $1 : configuration Debug Release
-if [ -n "$1" ]; then
-    build_grpc $1
-else
+if [ -z "${1:-}" ]; then
     build_grpc Debug
     build_grpc Release
+else
+    build_grpc $1
 fi
 
 
