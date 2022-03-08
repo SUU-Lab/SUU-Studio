@@ -48,7 +48,7 @@ jobs:
         working-directory: ./Linux/
         run: |
           chmod +x build-linux.sh
-          ./build-linux.sh Release
+          ./build-linux.sh ${{ matrix.configuration }}
           
       - name: Run tests
         working-directory: ./Linux/
