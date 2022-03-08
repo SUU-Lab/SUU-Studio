@@ -41,6 +41,7 @@ jobs:
           ./setup-linux.sh
 
   build:
+    runs-on: ubuntu-20.04
     needs: setup
 
     strategy:

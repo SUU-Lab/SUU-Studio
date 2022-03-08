@@ -45,6 +45,7 @@ jobs:
         run: nuget restore .\SUU-Runtime.sln
 
   build:
+    runs-on: windows-2022
     needs: setup
 
     strategy:

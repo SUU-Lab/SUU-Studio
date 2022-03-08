@@ -95,6 +95,7 @@ jobs:
             ${{ github.workspace }}/setup-android.sh
 
   build:
+  runs-on: macOS-latest
     needs: setup
     strategy:
       matrix:
