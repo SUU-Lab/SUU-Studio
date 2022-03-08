@@ -28,8 +28,6 @@ set ANDROID_CMAKE_PATH=%SDK_DIR%\cmake\%CMAKE_VERSION%\bin
 @REM %2 : api-level
 @REM %3 : configuration Debug Release
 if "%1" == "" if "%2" == "" if "%3" == "" (
-	call :Func_Build_gRPC %1 %2 %3
-) else (
 	call :Func_Build_gRPC arm64-v8a 21 Debug
 	call :Func_Build_gRPC arm64-v8a 21 Release
 	call :Func_Build_gRPC armeabi-v7a 21 Debug
@@ -38,6 +36,8 @@ if "%1" == "" if "%2" == "" if "%3" == "" (
 	call :Func_Build_gRPC x86_64 21 Release
 	call :Func_Build_gRPC x86 21 Debug
 	call :Func_Build_gRPC x86 21 Release
+) else (
+	call :Func_Build_gRPC %1 %2 %3
 )
 
 popd

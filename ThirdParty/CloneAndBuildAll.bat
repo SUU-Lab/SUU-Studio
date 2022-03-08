@@ -15,11 +15,11 @@ if not exist grpc (
 
 pushd grpc
 
-@REM %1 : platform Win32 x64
+@REM %1 : platform x86 x64
 @REM %2 : configuration Debug Release
 if "%1" == "" if "%2" == "" (
-	call :Func_Build_gRPC Win32 Debug
-	call :Func_Build_gRPC Win32 Release
+	call :Func_Build_gRPC x86 Debug
+	call :Func_Build_gRPC x86 Release
 	call :Func_Build_gRPC x64 Debug
 	call :Func_Build_gRPC x64 Release
 ) else (
@@ -34,21 +34,15 @@ goto :EXIT
 :Func_Build_gRPC
 echo ---------- Build gRPC %1 %2 ----------
 set BUILD_TARGET=%1
-set BUILD_DIR=.build_%BUILD_TARGET%_Windows
 set BUILD_CONFIGURATION=%2
+set BUILD_DIR=.build_%BUILD_TARGET%_Windows
 set INSTALL_DIR=%CURRENT_DIR%\Install\Windows\grpc\%BUILD_TARGET%\%BUILD_CONFIGURATION%
-
-set VC_TARGET_NAME=%BUILD_TARGET%
-
-if "%VC_TARGET_NAME%"=="Win32" (
-	set VC_TARGET_NAME=x86
-)
 
 for /f "usebackq delims=" %%A in (`vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath -latest`) do set VS_INSTALL_PATH=%%A
 
 if not exist %BUILD_DIR% (
 	md %BUILD_DIR%
-	call "%VS_INSTALL_PATH%\VC\Auxiliary\Build\vcvarsall.bat" %VC_TARGET_NAME%
+	call "%VS_INSTALL_PATH%\VC\Auxiliary\Build\vcvarsall.bat" %BUILD_TARGET%
 )
 
 %CMAKE_PATH%\cmake.exe ^
