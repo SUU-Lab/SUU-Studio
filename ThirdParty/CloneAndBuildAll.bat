@@ -18,12 +18,12 @@ pushd grpc
 @REM %1 : platform Win32 x64
 @REM %2 : configuration Debug Release
 if "%1" == "" if "%2" == "" (
-	call :Func_Build_gRPC %1 %2
-) else (
 	call :Func_Build_gRPC Win32 Debug
 	call :Func_Build_gRPC Win32 Release
 	call :Func_Build_gRPC x64 Debug
 	call :Func_Build_gRPC x64 Release
+) else (
+	call :Func_Build_gRPC %1 %2
 )
 
 popd
