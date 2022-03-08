@@ -93,7 +93,7 @@ jobs:
           disable-animations: false
           script: |
             chmod +x ${{ github.workspace }}/setup-android.sh
-            ${{ github.workspace }}/setup-android.sh
+            ${{ github.workspace }}/setup-android.sh $ANDROID_SDK_ROOT
 
   build:
     runs-on: macOS-latest
