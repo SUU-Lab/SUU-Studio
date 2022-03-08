@@ -1,21 +1,10 @@
 ﻿#include <SUU-Runtime/Remote/RuntimeCapture.hpp>
 #include <grpc++/grpc++.h>
-
-#if defined(SUU_RUNTIME_PLATFORM_WINDOWS)
-#include "Runtime-Platform/WindowsDesktop/Remote/RuntimeCapture.grpc.pb.h"
-#elif defined(SUU_RUNTIME_PLATFORM_LINUX)
-#include "Runtime-Platform/Linux/Remote/RuntimeCapture.grpc.pb.h"
-#elif defined(SUU_RUNTIME_PLATFORM_ANDROID)
-#include "Runtime-Platform/Android/Remote/RuntimeCapture.grpc.pb.h"
-#else
-#error "not supported yet."
-#endif
-
+#include "Runtime/Remote/Generated/RuntimeCapture.grpc.pb.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
-
 
 namespace remote {
 

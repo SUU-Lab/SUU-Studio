@@ -26,7 +26,7 @@ pushd %CPP_GEN_DIR%
 popd
 
 @rem copy src files
-set CPP_CODE_DIR=..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote
+set CPP_CODE_DIR=..\SUU-Runtime\source\Runtime\Remote\Generated
 if not exist %CPP_CODE_DIR% (
 	mkdir %CPP_CODE_DIR%
 )

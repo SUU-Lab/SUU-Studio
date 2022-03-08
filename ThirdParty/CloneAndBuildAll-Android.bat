@@ -7,6 +7,9 @@ if not exist %CURRENT_DIR%\Repositories (
 )
 pushd %CURRENT_DIR%\Repositories
 
+@REM ホストのprotocとgrpc_pluginのパスを通す
+set PATH=%CURRENT_DIR%\Install\Windows\grpc\x64\Release\bin;%PATH%
+
 set GRPC_VERSION=1.44.0
 
 if not exist grpc (
@@ -15,7 +18,7 @@ if not exist grpc (
 
 pushd grpc
 
-set SDK_DIR=C:\Users\bullets_2019_0305\AppData\Local\Android\Sdk
+set SDK_DIR=C:\Users\nsuud\AppData\Local\Android\Sdk
 set NDK_VERSION=21.4.7075529
 set NDK_DIR=%SDK_DIR%\ndk\%NDK_VERSION%
 
@@ -36,7 +39,9 @@ if "%1" == "" if "%2" == "" if "%3" == "" (
 	call :Func_Build_gRPC x86_64 21 Release
 	call :Func_Build_gRPC x86 21 Debug
 	call :Func_Build_gRPC x86 21 Release
-) else (
+)
+
+if not "%1" == "" if not "%2" == "" if not "%3" == "" (
 	call :Func_Build_gRPC %1 %2 %3
 )
 

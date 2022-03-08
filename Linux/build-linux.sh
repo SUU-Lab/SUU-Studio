@@ -3,8 +3,9 @@
 CURRENT=$(cd $(dirname $0);pwd)
 pushd $CURRENT
 
-BUILD_DIR=.build
+
 BUILD_CONFIGURATION=$1
+BUILD_DIR=.build_$BUILD_CONFIGURATION
 GRPC_INSTALL_DIR=$CURRENT/../ThirdParty/Install/Linux/grpc/$BUILD_CONFIGURATION
 
 cmake \

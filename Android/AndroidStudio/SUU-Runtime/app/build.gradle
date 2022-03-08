@@ -22,9 +22,22 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            externalNativeBuild {
+                cmake {
+                    arguments += '-DCMAKE_BUILD_TYPE=Debug'
+                }
+            }
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            externalNativeBuild {
+                cmake {
+                    arguments += '-DCMAKE_BUILD_TYPE=Release'
+                }
+            }
         }
     }
     compileOptions {

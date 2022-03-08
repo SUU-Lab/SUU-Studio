@@ -31,8 +31,8 @@
     <Filter Include="include\SUU-Runtime\Remote">
       <UniqueIdentifier>{8d5453c3-6c5e-4a5a-bee7-89d27e35799e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\Runtime-Platform\WindowsDesktop\Remote">
-      <UniqueIdentifier>{aacc352c-7c7c-4710-b5fd-383025017390}</UniqueIdentifier>
+    <Filter Include="source\Runtime\Remote\Generated">
+      <UniqueIdentifier>{41707db4-308b-46c1-9b3d-fd2ae48ae4d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,20 +45,20 @@
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Remote\Hello.hpp">
       <Filter>include\SUU-Runtime\Remote</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.grpc.pb.h">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.h">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.grpc.pb.h">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.pb.h">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Remote\RuntimeCapture.hpp">
       <Filter>include\SUU-Runtime\Remote</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.grpc.pb.h">
+      <Filter>source\Runtime\Remote\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.pb.h">
+      <Filter>source\Runtime\Remote\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.grpc.pb.h">
+      <Filter>source\Runtime\Remote\Generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.pb.h">
+      <Filter>source\Runtime\Remote\Generated</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -68,20 +68,20 @@
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\HelloTest.cpp">
       <Filter>source\Runtime\Remote</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.grpc.pb.cc">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.cc">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.grpc.pb.cc">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.pb.cc">
-      <Filter>source\Runtime-Platform\WindowsDesktop\Remote</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\RuntimeCapture.cpp">
       <Filter>source\Runtime\Remote</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.grpc.pb.cc">
+      <Filter>source\Runtime\Remote\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.pb.cc">
+      <Filter>source\Runtime\Remote\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.grpc.pb.cc">
+      <Filter>source\Runtime\Remote\Generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.pb.cc">
+      <Filter>source\Runtime\Remote\Generated</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -187,17 +187,17 @@
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Remote\RuntimeCapture.hpp" />
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\SUU-Runtime.hpp" />
     <ClInclude Include="..\..\..\..\SUU-Runtime\include\SUU-Runtime\Windows\Windows.hpp" />
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.grpc.pb.h" />
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.h" />
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.grpc.pb.h" />
-    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.pb.h" />
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.grpc.pb.h" />
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.pb.h" />
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.grpc.pb.h" />
+    <ClInclude Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.grpc.pb.cc" />
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\Hello.pb.cc" />
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.grpc.pb.cc" />
-    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Remote\RuntimeCapture.pb.cc" />
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime-Platform\WindowsDesktop\Windows\SUU-Runtime-Windows.cpp" />
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.grpc.pb.cc" />
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\Hello.pb.cc" />
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.grpc.pb.cc" />
+    <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\Generated\RuntimeCapture.pb.cc" />
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\HelloTest.cpp" />
     <ClCompile Include="..\..\..\..\SUU-Runtime\source\Runtime\Remote\RuntimeCapture.cpp" />
   </ItemGroup>

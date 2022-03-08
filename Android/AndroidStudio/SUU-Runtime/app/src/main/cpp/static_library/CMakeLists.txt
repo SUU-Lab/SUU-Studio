@@ -25,8 +25,11 @@ add_library(
         suu_runtime_static
         STATIC
         ${src_dir}/Runtime/Remote/HelloTest.cpp
-        ${src_dir}/Runtime-Platform/Android/Remote/Hello.grpc.pb.cc
-        ${src_dir}/Runtime-Platform/Android/Remote/Hello.pb.cc
+        ${src_dir}/Runtime/Remote/RuntimeCapture.cpp
+        ${src_dir}/Runtime/Remote/Generated/Hello.grpc.pb.cc
+        ${src_dir}/Runtime/Remote/Generated/Hello.pb.cc
+        ${src_dir}/Runtime/Remote/Generated/RuntimeCapture.grpc.pb.cc
+        ${src_dir}/Runtime/Remote/Generated/RuntimeCapture.pb.cc
         ${src_dir}/Runtime-Platform/Android/SUU-Runtime-Android.cpp)
 
 target_compile_definitions(

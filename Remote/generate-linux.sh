@@ -28,7 +28,7 @@ $GRPC_TOOL_DIR/protoc \
 $TARGET_PROTO_FILE
 
 # copy src files
-CPP_CODE_DIR=../../SUU-Runtime/source/Runtime-Platform/Linux/Remote
+CPP_CODE_DIR=../../SUU-Runtime/source/Runtime/Remote/Generated
 
 if [ ! -d "$CPP_CODE_DIR" ]; then
     mkdir $CPP_CODE_DIR

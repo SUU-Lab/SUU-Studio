@@ -8,16 +8,12 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-20.04
     if: |
       !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip linux]')
-
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
 
     steps:
       - name: Checkout code
@@ -36,14 +32,22 @@ jobs:
         id: install-cache
         with:
           path: ./ThirdParty/Install/*
-          key: install-cache-v3-${{ matrix.configuration }}
+          key: install-cache-v4
 
       - name: Install
         if: steps.install-cache.outputs.cache-hit != 'true'
         run: |
           chmod +x setup-linux.sh
-          ./setup-linux.sh ${{ matrix.configuration }}
+          ./setup-linux.sh
 
+  build:
+    needs: setup
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    steps:
       - name: Configure & Build
         working-directory: ./Linux/
         run: |
@@ -53,7 +57,7 @@ jobs:
       - name: Run tests
         working-directory: ./Linux/
         run: |
-          cd .build
+          cd .build_${{ matrix.configuration }}
           ./suu_runtime_test
           
         

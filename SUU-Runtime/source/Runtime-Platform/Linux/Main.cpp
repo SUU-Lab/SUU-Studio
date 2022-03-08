@@ -8,9 +8,9 @@
 
 int main(int, const char*[])
 {
-    // std::cout << suu::PlatformName() << std::endl;
+    std::cout << suu::PlatformName() << std::endl;
 
-    //remote::SayHello("SUUDAI");
+    remote::SayHello("SUUDAI");
 
     remote::RuntimeCapture runtimeCapture;
 

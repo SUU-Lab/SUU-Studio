@@ -12,22 +12,19 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Android:
+  setup:
     runs-on: macOS-latest
-    
     if: |
       !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip android]')
-    
-    strategy:
-      matrix:
+
+    matrix:
         api-level: [21]
-        configuration: [Debug, Release]
         ndk: [21.4.7075529]
         cmake: [3.18.1]
         abi: [x86_64]
-        
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.1.0
@@ -37,7 +34,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 11
-        
+
       - name: Gradle cache
         uses: actions/cache@v2
         with:
@@ -45,7 +42,7 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
-        
+
       - name: AVD cache
         uses: actions/cache@v2
         id: avd-cache
@@ -95,8 +92,15 @@ jobs:
           disable-animations: false
           script: |
             chmod +x ${{ github.workspace }}/setup-android.sh
-            ${{ github.workspace }}/setup-android.sh $ANDROID_SDK_ROOT ${{ matrix.abi }} ${{ matrix.api-level }} ${{ matrix.configuration }}
+            ${{ github.workspace }}/setup-android.sh
 
+  build:
+    needs: setup
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        
+    steps:
       - name: Build
         working-directory: ./Android/AndroidStudio/SUU-Runtime
         run: |

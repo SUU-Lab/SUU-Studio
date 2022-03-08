@@ -1,20 +1,10 @@
 ﻿#include <SUU-Runtime/Remote/Hello.hpp>
 #include <grpc++/grpc++.h>
-
-#if defined(SUU_RUNTIME_PLATFORM_WINDOWS)
-#include "Runtime-Platform/WindowsDesktop/Remote/Hello.grpc.pb.h"
-#elif defined(SUU_RUNTIME_PLATFORM_LINUX)
-#include "Runtime-Platform/Linux/Remote/Hello.grpc.pb.h"
-#elif defined(SUU_RUNTIME_PLATFORM_ANDROID)
-#include "Runtime-Platform/Android/Remote/Hello.grpc.pb.h"
-#else
-#error "not supported yet."
-#endif
+#include "Runtime/Remote/Generated/Hello.grpc.pb.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
-
 
 namespace remote {
 

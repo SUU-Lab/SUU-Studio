@@ -9,17 +9,12 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Windows:
+  setup:
     runs-on: windows-2022
     if: |
       !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip windows]')
-
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
-        platform: [x64, x86]
 
     steps:
       - name: Checkout code
@@ -44,11 +39,20 @@ jobs:
       - name: Install
         if: steps.install-cache.outputs.cache-hit != 'true'
         run: .\Setup.bat ${{ matrix.platform }} ${{ matrix.configuration }}
-        
+      
       - name: Restore the application
         working-directory: .\WindowsDesktop\VisualStudio2022\SUU-Runtime\
         run: nuget restore .\SUU-Runtime.sln
-      
+
+  build:
+    needs: setup
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        platform: [x64, x86]
+
+    steps:
       - name: Run MSBuild
         id: run_msbuild
         working-directory: .\WindowsDesktop\VisualStudio2022\SUU-Runtime\
