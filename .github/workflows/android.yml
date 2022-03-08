@@ -19,7 +19,8 @@ jobs:
       && !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip android]')
 
-    matrix:
+    strategy:
+      matrix:
         api-level: [21]
         ndk: [21.4.7075529]
         cmake: [3.18.1]
