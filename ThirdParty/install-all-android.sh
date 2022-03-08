@@ -90,17 +90,17 @@ function build_grpc() {
 # $3 : api-level
 # $4 : configuration Debug Release
 if [ -z "${2:-}" ] && [ -z "${3:-}" ] && [ -z "${4:-}" ]; then
-	build_grpc abi arm64-v8a 21 Debug
-	build_grpc abi arm64-v8a 21 Release
+	build_grpc arm64-v8a 21 Debug
+	build_grpc arm64-v8a 21 Release
 	
-	build_grpc abi armeabi-v7a 21 Debug
-	build_grpc abi armeabi-v7a 21 Release
+	build_grpc armeabi-v7a 21 Debug
+	build_grpc armeabi-v7a 21 Release
 
-	build_grpc abi x86_64 21 Debug
-	build_grpc abi x86_64 21 Release
+	build_grpc x86_64 21 Debug
+	build_grpc x86_64 21 Release
 
-	build_grpc abi x86 21 Debug
-	build_grpc abi x86 21 Release
+	build_grpc x86 21 Debug
+	build_grpc x86 21 Release
 else
 	build_grpc $2 $3 $4
 fi
