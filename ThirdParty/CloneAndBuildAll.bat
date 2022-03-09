@@ -22,7 +22,8 @@ if "%1" == "" if "%2" == "" (
 	call :Func_Build_gRPC x86 Release
 	call :Func_Build_gRPC x64 Debug
 	call :Func_Build_gRPC x64 Release
-) else (
+)
+if not "%1" == "" if not "%2" == "" (
 	call :Func_Build_gRPC %1 %2
 )
 

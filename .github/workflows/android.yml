@@ -73,7 +73,7 @@ jobs:
         id: install-cache
         with:
           path: ./ThirdParty/Install/*
-          key: install-cache-v4
+          key: install-cache-v4-${{ matrix.abi }}-${{ matrix.api-level }}-${{ matrix.configuration }}
 
       - name: Install gRPC
         if: steps.install-cache.outputs.cache-hit != 'true'
