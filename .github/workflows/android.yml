@@ -12,7 +12,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  setup:
+  build:
     runs-on: macOS-latest
     if: |
       !contains(github.event.head_commit.message, '[skip ci]')
@@ -25,6 +25,7 @@ jobs:
         ndk: [21.4.7075529]
         cmake: [3.18.1]
         abi: [x86_64]
+        configuration: [Debug, Release]
 
     steps:
       - name: Checkout code
@@ -93,16 +94,8 @@ jobs:
           disable-animations: false
           script: |
             chmod +x ${{ github.workspace }}/setup-android.sh
-            ${{ github.workspace }}/setup-android.sh $ANDROID_SDK_ROOT
+            ${{ github.workspace }}/setup-android.sh $ANDROID_SDK_ROOT ${{ matrix.abi }} ${{ matrix.api-level }} ${{ matrix.configuration }}
 
-  build:
-    runs-on: macOS-latest
-    needs: setup
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
-        
-    steps:
       - name: Build
         working-directory: ./Android/AndroidStudio/SUU-Runtime
         run: |

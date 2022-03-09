@@ -8,12 +8,16 @@ on:
     branches: [ main ]
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-20.04
     if: |
       !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip ci]')
       && !contains(github.event.head_commit.message, '[skip linux]')
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
 
     steps:
       - name: Checkout code
@@ -38,17 +42,8 @@ jobs:
         if: steps.install-cache.outputs.cache-hit != 'true'
         run: |
           chmod +x setup-linux.sh
-          ./setup-linux.sh
+          ./setup-linux.sh ${{ matrix.configuration }}
 
-  build:
-    runs-on: ubuntu-20.04
-    needs: setup
-
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
-
-    steps:
       - name: Configure & Build
         working-directory: ./Linux/
         run: |
